@@ -1,0 +1,35 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class GM : MonoBehaviour
+{
+
+    public Texture2D defaultTexture;
+    public CursorMode curMode = CursorMode.Auto;
+    public Vector2 hotSpot = Vector2.zero;
+    public Vector2 mousePosition;
+    public Vector2 objPosition;
+
+    public KeyCode fireMissile;
+
+    public Transform missileObj;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        Cursor.SetCursor(defaultTexture, hotSpot, curMode);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        mousePosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        objPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+
+        if (Input.GetKeyDown(fireMissile) == true)
+        {
+            Instantiate(missileObj, new Vector2(-5.76f, -4),missileObj.rotation);
+        }
+    }
+}
