@@ -9,7 +9,8 @@ public class GM : MonoBehaviour
     public CursorMode curMode = CursorMode.Auto;
     public Vector2 hotSpot = Vector2.zero;
     public Vector2 mousePosition;
-    public Vector2 objPosition;
+    public static Vector2 objPosition;
+    public static Vector2 targetPosition;
 
     public KeyCode fireMissile;
 
@@ -29,7 +30,7 @@ public class GM : MonoBehaviour
 
         if (Input.GetKeyDown(fireMissile) == true)
         {
-            Instantiate(missileObj, new Vector2(-5.76f, -4),missileObj.rotation);
+            Instantiate(missileObj, new Vector2(-5.76f, -4.2f),missileObj.rotation);
         }
     }
 }
