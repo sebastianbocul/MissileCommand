@@ -8,24 +8,21 @@ public class targetControll : MonoBehaviour
     void Start()
     {
        
-        Debug.Log("KAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAK");
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("KAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAK");
+       
     }
 
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        Destroy(gameObject);
-        Debug.Log("collision name = " + collider.gameObject.name);
+        
         if (collider.gameObject.name == "anti_missile_L(Clone)")
         {
             Destroy(gameObject);
-            Debug.Log("KOLIZJAA CELOWNIK");
         }
     }
 

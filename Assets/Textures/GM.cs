@@ -18,6 +18,13 @@ public class GM : MonoBehaviour
     public Transform missileObj;
 
     public Transform lockOnTarget;
+    public Transform countText;
+    public Transform enemyObj;
+
+    public float spawnTimer;
+    public int randX;
+
+    public static int rockets = 15;
 
     // Start is called before the first frame update
     void Start()
@@ -29,13 +36,33 @@ public class GM : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mousePosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        enemySpawn();
+        countText.GetComponent<TextMesh>().text = rockets.ToString() ;
+        mousePosition = new Vector2(Input.mousePosition.x+16, Input.mousePosition.y-16);
         objPosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
-        if (Input.GetKeyDown(fireMissile) == true)
+        if (Input.GetKeyDown(fireMissile) == true && rockets>0)
         {
             Instantiate(missileObj, new Vector2(-5.76f, -4.2f),missileObj.rotation);
             Instantiate(lockOnTarget, objPosition, lockOnTarget.rotation);
+            rockets--;
         }
     }
+
+    void enemySpawn()
+    {
+        spawnTimer += Time.deltaTime;
+        randX = Random.Range(-7,7);
+        if (spawnTimer > 1)
+        {
+            spawnTimer = 0;
+            Instantiate(enemyObj,new Vector2(randX,6f),enemyObj.rotation);
+
+
+        }
+
+    }
+
+
+
 }
