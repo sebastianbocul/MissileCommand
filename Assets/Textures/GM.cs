@@ -53,7 +53,7 @@ public class GM : MonoBehaviour
     {
         spawnTimer += Time.deltaTime;
         randX = Random.Range(-7,7);
-        if (spawnTimer > 1)
+        if (spawnTimer > 0.005f)
         {
             spawnTimer = 0;
             Instantiate(enemyObj,new Vector2(randX,6f),enemyObj.rotation);
