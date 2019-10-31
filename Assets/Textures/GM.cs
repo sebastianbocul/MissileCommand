@@ -21,17 +21,21 @@ public class GM : MonoBehaviour
     public Transform countText;
     public Transform enemyObj;
 
+    public GameObject staticRocket;
+
+
     public float spawnTimer;
     public int randX;
 
     public bool rocketLive=false;
-    public static int rockets = 15;
+    public int rockets = 15;
 
     // Start is called before the first frame update
     void Start()
     {
         Cursor.SetCursor(defaultTexture, hotSpot, curMode);
         //objPosition = Vector3.Lerp(-5.76f, -4.2f, 0);
+        staticRocket.SetActive(true);
     }
 
     // Update is called once per frame
@@ -48,6 +52,9 @@ public class GM : MonoBehaviour
             Instantiate(lockOnTarget, objPosition, lockOnTarget.rotation);
             rockets--;
             rocketLive = true;
+
+            staticRocket.SetActive(false);
+
         }
     }
 

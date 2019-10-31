@@ -35,4 +35,16 @@ public class cometControl : MonoBehaviour
     {
         
     }
+
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "boomNew(Clone)")
+        {
+            Destroy(gameObject);
+            FindObjectOfType<GM>().rockets += 1;
+        }
+       
+    }
 }

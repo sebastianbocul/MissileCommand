@@ -122,7 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeKeeper: 0
   fracDist: 0.01
-  boomObj: {fileID: 1882490747456494655, guid: 7491ded9f6f2bfa4cb9f8d0d8b3a1504, type: 3}
+  boomObj: {fileID: 8899842892478497729, guid: 7d08125461a7d32439ccbedb0ef71f9b, type: 3}
   testPosition: {x: -5.76, y: -4.4, z: 0}
 --- !u!50 &-531816588378057770
 Rigidbody2D:

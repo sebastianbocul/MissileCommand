@@ -7,7 +7,7 @@ public class control : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("KAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAK");
+
     }
 
     // Update is called once per frame
@@ -18,6 +18,10 @@ public class control : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        Destroy(gameObject);
+        if(collider.gameObject.name == "anti_missile_L(Clone)")
+        {
+            Destroy(gameObject);
+        }
+        
     }
 }

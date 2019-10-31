@@ -52,7 +52,9 @@ public class missileControl : MonoBehaviour
             Destroy (gameObject);
             Instantiate(boomObj, transform.position, boomObj.rotation);
             FindObjectOfType<GM>().rocketLive = false;
-      
+            FindObjectOfType<GM>().staticRocket.SetActive(true);
+            Destroy(gameObject);
+
 
         }
     }
