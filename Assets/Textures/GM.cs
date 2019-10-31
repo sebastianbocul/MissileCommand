@@ -20,11 +20,13 @@ public class GM : MonoBehaviour
     public Transform lockOnTarget;
     public Transform countText;
     public Transform enemyObj;
-
+    public Transform enemyObjBig;
     public GameObject staticRocket;
 
 
-    public float spawnTimer;
+    public float spawnSmallCometTimer;
+    public float spawnBigCometTimer;
+
     public int randX;
 
     public bool rocketLive=false;
@@ -60,14 +62,31 @@ public class GM : MonoBehaviour
 
     void enemySpawn()
     {
-        spawnTimer += Time.deltaTime;
-        randX = Random.Range(-7,7);
-        if (spawnTimer > 1f)
+        spawnSmallCometTimer += Time.deltaTime;
+        spawnBigCometTimer += Time.deltaTime;
+
+        randX = Random.Range(-8,8);
+
+
+
+        //small comet spawner
+        if (spawnSmallCometTimer > 1f)
         {
-            spawnTimer = 0;
+            spawnSmallCometTimer = 0;
             Instantiate(enemyObj,new Vector2(randX,6f),enemyObj.rotation);
 
            // rocketLive = rocketLiveFun();
+        }
+
+
+        //big comet spawner
+        if (spawnBigCometTimer > 1f)
+        {
+            spawnBigCometTimer = 0;
+            Instantiate(enemyObjBig, new Vector2(randX, 6f), enemyObjBig.rotation);
+
+           
+   
         }
 
     }
