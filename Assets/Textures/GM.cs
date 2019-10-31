@@ -13,7 +13,8 @@ public class GM : MonoBehaviour
     public static Vector2 objPosition = new Vector2(-5.76f, -4.4f);
     public static Vector2 targetPosition;
 
-    public KeyCode fireMissile;
+    public KeyCode fireMissileL;
+   // public KeyCode fireMissileR;
 
     public Transform missileObj;
 
@@ -56,14 +57,12 @@ public class GM : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
         enemySpawn();
         countText.GetComponent<TextMesh>().text = rockets.ToString() ;
         mousePosition = new Vector3(Input.mousePosition.x+16, Input.mousePosition.y-16, Input.mousePosition.z - transform.position.z);
         objPosition = Camera.main.ScreenToWorldPoint(mousePosition);
-
-
-        //h = horizontalSpeed * Input.GetAxis("Mouse X");
-        //  v = verticalSpeed * Input.GetAxis("Mouse Z");
 
 
         /*
@@ -79,8 +78,8 @@ public class GM : MonoBehaviour
         */
 
 
-
-        if (Input.GetKeyDown(fireMissile) == true && rockets>0 && rocketLive==false)
+        //Launching rockets
+        if (Input.GetKeyDown(fireMissileL) == true && rockets>0 && rocketLive==false)
         {
             Instantiate(missileObj, new Vector2(-5.76f, -4.2f),missileObj.rotation);
             Instantiate(lockOnTarget, objPosition, lockOnTarget.rotation);
