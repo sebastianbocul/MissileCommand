@@ -24,6 +24,7 @@ public class GM : MonoBehaviour
     public float spawnTimer;
     public int randX;
 
+    public bool rocketLive=false;
     public static int rockets = 15;
 
     // Start is called before the first frame update
@@ -41,11 +42,12 @@ public class GM : MonoBehaviour
         mousePosition = new Vector2(Input.mousePosition.x+16, Input.mousePosition.y-16);
         objPosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
-        if (Input.GetKeyDown(fireMissile) == true && rockets>0)
+        if (Input.GetKeyDown(fireMissile) == true && rockets>0 && rocketLive==false)
         {
             Instantiate(missileObj, new Vector2(-5.76f, -4.2f),missileObj.rotation);
             Instantiate(lockOnTarget, objPosition, lockOnTarget.rotation);
             rockets--;
+            rocketLive = true;
         }
     }
 
@@ -53,12 +55,12 @@ public class GM : MonoBehaviour
     {
         spawnTimer += Time.deltaTime;
         randX = Random.Range(-7,7);
-        if (spawnTimer > 0.005f)
+        if (spawnTimer > 1f)
         {
             spawnTimer = 0;
             Instantiate(enemyObj,new Vector2(randX,6f),enemyObj.rotation);
 
-
+           // rocketLive = rocketLiveFun();
         }
 
     }
