@@ -18,7 +18,7 @@ public class control : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collider.gameObject.name == "anti_missile_L(Clone)")
+        if(collider.gameObject.name == "anti_missile_L(Clone)" || collider.gameObject.name == "anti_missile_R(Clone)")
         {
             Destroy(gameObject);
         }

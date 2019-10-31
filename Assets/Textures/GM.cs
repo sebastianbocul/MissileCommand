@@ -14,15 +14,17 @@ public class GM : MonoBehaviour
     public static Vector2 targetPosition;
 
     public KeyCode fireMissileL;
-   // public KeyCode fireMissileR;
+    public KeyCode fireMissileR;
 
     public Transform missileObj;
+    public Transform missileObjR;
 
     public Transform lockOnTarget;
     public Transform countText;
     public Transform enemyObj;
     public Transform enemyObjBig;
-    public GameObject staticRocket;
+    public GameObject staticRocketL;
+    public GameObject staticRocketR;
 
 
     public float spawnSmallCometTimer;
@@ -51,7 +53,8 @@ public class GM : MonoBehaviour
     {
         Cursor.SetCursor(defaultTexture, hotSpot, curMode);
         //objPosition = Vector3.Lerp(-5.76f, -4.2f, 0);
-        staticRocket.SetActive(true);
+        staticRocketL.SetActive(true);
+        staticRocketR.SetActive(true);
     }
 
     // Update is called once per frame
@@ -86,7 +89,18 @@ public class GM : MonoBehaviour
             rockets--;
             rocketLive = true;
 
-            staticRocket.SetActive(false);
+            staticRocketL.SetActive(false);
+          
+
+        }
+
+        if (Input.GetKeyDown(fireMissileR) == true && rockets > 0 && rocketLive == false)
+        {
+            Instantiate(missileObjR, new Vector2(6.4f, -4.2f), missileObjR.rotation);
+            Instantiate(lockOnTarget, objPosition, lockOnTarget.rotation);
+            rockets--;
+            rocketLive = true;
+            staticRocketR.SetActive(false);
 
         }
     }

@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class missileControl : MonoBehaviour
+public class missileControlR : MonoBehaviour
 {
     public float timeKeeper = 0;
     public float fracDist = 0.01f;
 
 
     public Transform boomObj;
-    public Vector3 testPosition = new Vector3(-5.76f, -4.4f, 0);
+    public Vector3 testPosition = new Vector3(6.4f, -4.2f, 0);
 
     //rotacja rakiety
     private Vector3 mouse_pos;
@@ -34,7 +34,7 @@ public class missileControl : MonoBehaviour
         //staticRocket.transform.rotation = Quaternion.Euler(0, 0, angle);
         transform.rotation = (Quaternion.Euler(0, 0, angle - 90));
 
-      //  GetComponent<Transform>().eulerAngles = new Vector3(0, 0,0); 
+     
     }
    
     // Update is called once per frame
@@ -66,8 +66,8 @@ public class missileControl : MonoBehaviour
         {
             Destroy (gameObject);
             Instantiate(boomObj, transform.position, boomObj.rotation);
-            FindObjectOfType<GM>().rocketLive = false;
-            FindObjectOfType<GM>().staticRocketL.SetActive(true);
+            FindObjectOfType<GM>().rocketLive = false;        
+            FindObjectOfType<GM>().staticRocketR.SetActive(true);
             Destroy(gameObject);
 
 
