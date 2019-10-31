@@ -32,6 +32,19 @@ public class GM : MonoBehaviour
     public bool rocketLive=false;
     public int rockets = 15;
 
+    public float rotationSpeed = 0.1f;
+
+    public float h;
+    public float v;
+    public float horizontalSpeed = 2.0F;
+    public float verticalSpeed = 2.0F;
+
+    //rotacja rakiety
+    private Vector3 mouse_pos;
+    private Vector3 object_pos;
+    private float angle;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,8 +58,27 @@ public class GM : MonoBehaviour
     {
         enemySpawn();
         countText.GetComponent<TextMesh>().text = rockets.ToString() ;
-        mousePosition = new Vector2(Input.mousePosition.x+16, Input.mousePosition.y-16);
+        mousePosition = new Vector3(Input.mousePosition.x+16, Input.mousePosition.y-16, Input.mousePosition.z - transform.position.z);
         objPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+
+
+        //h = horizontalSpeed * Input.GetAxis("Mouse X");
+        //  v = verticalSpeed * Input.GetAxis("Mouse Z");
+
+
+        /*
+        //Rotacja rakiety
+        mouse_pos = Input.mousePosition;
+        mouse_pos.z = -90;
+        object_pos = Camera.main.WorldToScreenPoint(staticRocket.transform.position);
+        mouse_pos.x = mouse_pos.x - object_pos.x;
+        mouse_pos.y = mouse_pos.y - object_pos.y;
+        angle = Mathf.Atan2(mouse_pos.y, mouse_pos.x) * Mathf.Rad2Deg;
+        //staticRocket.transform.rotation = Quaternion.Euler(0, 0, angle);
+        staticRocket.transform.rotation = (Quaternion.Euler(0, 0, angle-90));
+        */
+
+
 
         if (Input.GetKeyDown(fireMissile) == true && rockets>0 && rocketLive==false)
         {
@@ -80,7 +112,7 @@ public class GM : MonoBehaviour
 
 
         //big comet spawner
-        if (spawnBigCometTimer > 1f)
+        if (spawnBigCometTimer > 3f)
         {
             spawnBigCometTimer = 0;
             Instantiate(enemyObjBig, new Vector2(randX, 6f), enemyObjBig.rotation);

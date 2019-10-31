@@ -26,7 +26,7 @@ public class cometControlBigPiece : MonoBehaviour
         randY = randY / 100;
 
         GetComponent<Rigidbody2D>().velocity = new Vector2(randX, randY);
-        GetComponent<Rigidbody2D>().gravityScale = 0.5f;
+        GetComponent<Rigidbody2D>().gravityScale = 0.25f;
         GetComponent<Collider2D>().enabled = false;
 
 

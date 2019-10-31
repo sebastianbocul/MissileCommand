@@ -11,7 +11,10 @@ public class missileControl : MonoBehaviour
     public Transform boomObj;
     public Vector3 testPosition = new Vector3(-5.76f, -4.4f, 0);
 
-
+    //rotacja rakiety
+    private Vector3 mouse_pos;
+    private Vector3 object_pos;
+    private float angle;
 
 
     // Start is called before the first frame update
@@ -19,7 +22,19 @@ public class missileControl : MonoBehaviour
     {
         GM.targetPosition = GM.objPosition;
         fracDist = 0.01f;
-        GetComponent<Transform>().eulerAngles = new Vector3(0, 0, -15); 
+
+
+        //Rotacja rakiety
+        mouse_pos = Input.mousePosition;
+        mouse_pos.z = -90;
+        object_pos = Camera.main.WorldToScreenPoint(gameObject.transform.position);
+        mouse_pos.x = mouse_pos.x - object_pos.x;
+        mouse_pos.y = mouse_pos.y - object_pos.y;
+        angle = Mathf.Atan2(mouse_pos.y, mouse_pos.x) * Mathf.Rad2Deg;
+        //staticRocket.transform.rotation = Quaternion.Euler(0, 0, angle);
+        transform.rotation = (Quaternion.Euler(0, 0, angle - 90));
+
+      //  GetComponent<Transform>().eulerAngles = new Vector3(0, 0,0); 
     }
    
     // Update is called once per frame
