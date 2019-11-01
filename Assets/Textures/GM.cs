@@ -5,6 +5,8 @@ using UnityEngine;
 public class GM : MonoBehaviour
 {
 
+    public string[] cityNames = { "city01", "city02", "city03", "city04", "city05", "city06", "city07" };
+
     public Texture2D defaultTexture;
     public CursorMode curMode = CursorMode.Auto;
     public Vector2 hotSpot = Vector2.zero;

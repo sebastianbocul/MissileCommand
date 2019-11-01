@@ -9,6 +9,8 @@ public class cometControl : MonoBehaviour
     public float randX;
     public float randY;
 
+   
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +53,16 @@ public class cometControl : MonoBehaviour
             FindObjectOfType<GM>().rockets += 1;
             FindObjectOfType<GM>().score++;
         }
+
+        foreach (string city in FindObjectOfType<GM>().cityNames){
+            if (collision.gameObject.name == city)
+            {
+                Destroy(gameObject);
+                FindObjectOfType<GM>().score--;
+            }
+        }
+
+        
        
     }
 }

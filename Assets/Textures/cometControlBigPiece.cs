@@ -71,6 +71,16 @@ public class cometControlBigPiece : MonoBehaviour
 
 
         }
-       
+
+        foreach (string city in FindObjectOfType<GM>().cityNames)
+        {
+            if (collision.gameObject.name == city)
+            {
+                Destroy(gameObject);
+                FindObjectOfType<GM>().score--;
+            }
+        }
+
+
     }
 }
