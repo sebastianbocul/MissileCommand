@@ -20,7 +20,10 @@ public class GM : MonoBehaviour
     public Transform missileObjR;
 
     public Transform lockOnTarget;
+
     public Transform countText;
+    public Transform scoreText;
+
     public Transform enemyObj;
     public Transform enemyObjBig;
     public GameObject staticRocketL;
@@ -34,6 +37,7 @@ public class GM : MonoBehaviour
 
     public bool rocketLive=false;
     public int rockets = 15;
+    public int score = 0;
 
     public float rotationSpeed = 0.1f;
 
@@ -64,6 +68,7 @@ public class GM : MonoBehaviour
 
         enemySpawn();
         countText.GetComponent<TextMesh>().text = rockets.ToString() ;
+        scoreText.GetComponent<TextMesh>().text = score.ToString();
         mousePosition = new Vector3(Input.mousePosition.x+16, Input.mousePosition.y-16, Input.mousePosition.z - transform.position.z);
         objPosition = Camera.main.ScreenToWorldPoint(mousePosition);
 

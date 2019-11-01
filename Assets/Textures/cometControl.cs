@@ -49,6 +49,7 @@ public class cometControl : MonoBehaviour
         {
             Destroy(gameObject);
             FindObjectOfType<GM>().rockets += 1;
+            FindObjectOfType<GM>().score++;
         }
        
     }

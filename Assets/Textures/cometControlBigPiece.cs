@@ -67,8 +67,9 @@ public class cometControlBigPiece : MonoBehaviour
             Vector3 collisionPosition = gameObject.transform.position;
             Destroy(gameObject);
             FindObjectOfType<GM>().rockets += 1;
+            FindObjectOfType<GM>().score++;
 
-     
+
         }
        
     }
