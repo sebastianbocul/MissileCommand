@@ -108,7 +108,7 @@ public class GM : MonoBehaviour
             rockets--;
             rocketLive = true;
             staticRocketR.SetActive(false);
-
+            
         }
     }
 

@@ -9,6 +9,8 @@ public class cometControl : MonoBehaviour
     public float randX;
     public float randY;
 
+    public Transform destroy_city;
+
    
 
     // Start is called before the first frame update
@@ -59,6 +61,9 @@ public class cometControl : MonoBehaviour
             {
                 Destroy(gameObject);
                 FindObjectOfType<GM>().score--;
+                Instantiate(destroy_city, gameObject.transform.position, destroy_city.rotation);
+                
+                
             }
         }
 

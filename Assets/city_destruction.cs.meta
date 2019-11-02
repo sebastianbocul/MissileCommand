@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: c65a37e980520204294964591e9d8399
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - city1_d: {fileID: 6876338679986657126, guid: 0d4e642ef5137d8469cb4dbfed964c33,
+      type: 3}
+  - city2_d: {instanceID: 0}
+  - city3_d: {instanceID: 0}
+  - city4_d: {instanceID: 0}
+  - city5_d: {instanceID: 0}
+  - city6_d: {instanceID: 0}
+  - bridge_d: {fileID: 1932294191031196649, guid: 75f223a8637a3164aa458d5b589e42f7,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
