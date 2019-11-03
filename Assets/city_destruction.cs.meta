@@ -6,12 +6,17 @@ MonoImporter:
   defaultReferences:
   - city1_d: {fileID: 6876338679986657126, guid: 0d4e642ef5137d8469cb4dbfed964c33,
       type: 3}
-  - city2_d: {instanceID: 0}
-  - city3_d: {instanceID: 0}
-  - city4_d: {instanceID: 0}
-  - city5_d: {instanceID: 0}
-  - city6_d: {instanceID: 0}
-  - bridge_d: {fileID: 1932294191031196649, guid: 75f223a8637a3164aa458d5b589e42f7,
+  - city2_d: {fileID: 1695080400831408628, guid: 3bc08275b9e94804a92e926f0d55405e,
+      type: 3}
+  - city3_d: {fileID: 3650723056383175443, guid: f25b400ef1068884499ea7733342b3a8,
+      type: 3}
+  - city4_d: {fileID: 8187753570605072946, guid: a46c361a3b2378347bd5e3f2be81f38f,
+      type: 3}
+  - city5_d: {fileID: 3861925127768354316, guid: 931fae6230089924f8a3b706d299a851,
+      type: 3}
+  - city6_d: {fileID: 1811628097276538420, guid: e6dd26114b31ba940b3ba2a5cdf6bbe7,
+      type: 3}
+  - city7_d: {fileID: 4837932747231456308, guid: c748127c6d9a26e42bafaec833fbd81f,
       type: 3}
   executionOrder: 0
   icon: {instanceID: 0}

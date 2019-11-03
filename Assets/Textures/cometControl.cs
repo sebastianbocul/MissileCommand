@@ -22,7 +22,7 @@ public class cometControl : MonoBehaviour
         randY = Random.Range(-100, -300);
         randY = randY / 100;
 
-        Debug.Log("randX:" + randX + "      randY:" + randY);
+   //     Debug.Log("randX:" + randX + "      randY:" + randY);
 
         GetComponent<Rigidbody2D>().velocity = new Vector2(randX, randY);
 
