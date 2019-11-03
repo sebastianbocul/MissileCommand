@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class city_destruction : MonoBehaviour
 {
-    public static  Transform city1_d;
+    public static Transform city1_d;
     public static Transform city2_d;
     public static Transform city3_d;
     public static Transform city4_d;
@@ -29,9 +29,33 @@ public class city_destruction : MonoBehaviour
 
                 }
             }
-
-            
-
         }
+
+        if (collision.gameObject.name == "cometBig(Clone)")
+        {
+            Destroy(gameObject);
+            for (int i = 0; i <= 6; i++)
+            {
+                if (gameObject.name == "city0" + i)
+                {
+                    //Instantiate(city_dd[i], gameObject.transform.position, gameObject.transform.rotation);
+
+                }
+            }
+        }
+
+        if (collision.gameObject.name == "cometBigPiece(Clone)")
+        {
+            Destroy(gameObject);
+            for (int i = 0; i <= 6; i++)
+            {
+                if (gameObject.name == "city0" + i)
+                {
+                    //Instantiate(city_dd[i], gameObject.transform.position, gameObject.transform.rotation);
+
+                }
+            }
+        }
+
     }
 }

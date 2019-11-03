@@ -4824,6 +4824,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cometBigPiece: {fileID: 9181357708414953453, guid: d51fcbc172f1b134094bb989b42eebed,
     type: 3}
+  destroy_city: {fileID: 3017582291615719405, guid: 7db68cc2af5d7f04dbcd09ba63cbd2fd,
+    type: 3}
   enemyTraj: 0
   randX: 0
   randY: 0

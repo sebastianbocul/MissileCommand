@@ -6,6 +6,7 @@ public class cometControlBigPiece : MonoBehaviour
 {
 
     public Transform cometBigPiece;
+    public Transform destroy_city;
 
     public int enemyTraj;
     public float randX;
@@ -78,6 +79,8 @@ public class cometControlBigPiece : MonoBehaviour
             {
                 Destroy(gameObject);
                 FindObjectOfType<GM>().score--;
+                Instantiate(destroy_city, gameObject.transform.position, destroy_city.rotation);
+
             }
         }
 
