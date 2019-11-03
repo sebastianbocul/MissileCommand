@@ -8,7 +8,7 @@ public class city_destruction : MonoBehaviour
     public Transform city2_d;
     public Transform city3_d;
     public Transform city4_d;
-    public Transform city5_d;
+    public Transform city5_dd;
     public Transform city6_d;
     public Transform city7_d;
 
@@ -42,7 +42,7 @@ public class city_destruction : MonoBehaviour
                 }
             case 53:
                 {
-                    Instantiate(city5_d, gameObject.transform.position, gameObject.transform.rotation);
+                    Instantiate(city5_dd, gameObject.transform.position, gameObject.transform.rotation);
                     break;
                 }
 
@@ -69,46 +69,8 @@ public class city_destruction : MonoBehaviour
             Destroy(gameObject);
             char lastChar = gameObject.name[gameObject.name.Length - 1];
             int i = lastChar;
-            switch (i)
-        {
-            case 49:
-                {
-                    Instantiate(city1_d, gameObject.transform.position, gameObject.transform.rotation);
-                    break;
-                }
-            case 50:
-                {
-                    Instantiate(city2_d, gameObject.transform.position, gameObject.transform.rotation);
-                    break;
-                }
-            case 51:
-                {
-                    Instantiate(city3_d, gameObject.transform.position, gameObject.transform.rotation);
-                    break;
-                }
-            case 52:
-                {
-                    Instantiate(city4_d, gameObject.transform.position, gameObject.transform.rotation);
-                    break;
-                }
-            case 53:
-                {
-                    Instantiate(city5_d, gameObject.transform.position, gameObject.transform.rotation);
-                    break;
-                }
+            spawnCity(i);
 
-            case 54:
-                {
-                    Instantiate(city6_d, gameObject.transform.position, gameObject.transform.rotation);
-                    break;
-                }
-            case 55:
-                {
-                    Instantiate(city7_d, gameObject.transform.position, gameObject.transform.rotation);
-                    break;
-                }
-
-        }
         }
 
         if (collision.gameObject.name == "cometBig(Clone)")

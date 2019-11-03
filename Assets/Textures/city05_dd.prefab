@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3861925127768354316}
   - component: {fileID: 1173049266084818756}
+  - component: {fileID: -8574740241668565323}
   m_Layer: 0
   m_Name: city05_d
   m_TagString: Untagged
@@ -79,3 +80,43 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &-8574740241668565323
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2298622149886391582}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.5, y: 0.83}
+    newSize: {x: 2.5, y: 0.83}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.75, y: -0.295}
+      - {x: 0.19999999, y: -0.265}
+      - {x: -0.02, y: -0.114999995}
+      - {x: -0.14, y: -0.065}
+      - {x: -0.48, y: -0.225}
+      - {x: -0.9, y: -0.225}
+      - {x: -0.90999997, y: -0.095}
+      - {x: -0.94, y: -0.065}
+      - {x: -1, y: -0.065}
+      - {x: -1.03, y: -0.074999996}
+      - {x: -1.25, y: -0.175}
+      - {x: -1.25, y: -0.415}
+      - {x: 1.25, y: -0.415}
+      - {x: 1.25, y: -0.175}
+      - {x: 1.12, y: -0.175}

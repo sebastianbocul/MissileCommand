@@ -5,7 +5,9 @@ using UnityEngine;
 public class GM : MonoBehaviour
 {
 
-    public string[] cityNames = { "city01", "city02", "city03", "city04", "city05", "city06", "city07" };
+    public string[] cityNames = { "city01", "city02", "city03", "city04", "city05", "city06", "city07"};
+    public string[] city_d = { "city01_d(Clone)", "city02_d(Clone)", "city03_d(Clone)", "city04_d(Clone)", "city05_dd(Clone)", "city06_d(Clone)", "city07_d(Clone)","water2" };
+
 
     public Texture2D defaultTexture;
     public CursorMode curMode = CursorMode.Auto;

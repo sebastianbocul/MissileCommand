@@ -38,7 +38,6 @@ public class cometControl : MonoBehaviour
         */
         
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -57,6 +56,7 @@ public class cometControl : MonoBehaviour
         }
 
         foreach (string city in FindObjectOfType<GM>().cityNames){
+            Debug.Log(city);
             if (collision.gameObject.name == city)
             {
                 Destroy(gameObject);
@@ -67,7 +67,16 @@ public class cometControl : MonoBehaviour
             }
         }
 
-        
-       
+        foreach(string city_destroy in FindObjectOfType<GM>().city_d)
+        if(collision.gameObject.name == city_destroy)
+        {
+                Destroy(gameObject);
+                FindObjectOfType<GM>().score--;
+                Instantiate(destroy_city, gameObject.transform.position, destroy_city.rotation);
+
+        }
+
+
+
     }
 }
