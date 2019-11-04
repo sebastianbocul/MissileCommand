@@ -30,9 +30,14 @@ public class GM : MonoBehaviour
 
     public Transform countText;
     public Transform scoreText;
+
+    //after game text
     public GameObject scoreBig;
     public GameObject scoreEnd;
     public GameObject clickSpaceToContinue;
+    public GameObject highScore;
+    public GameObject highScoreNumber;
+
 
     public Transform enemyObj;
     public Transform enemyObjBig;
@@ -67,6 +72,7 @@ public class GM : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+       // PlayerPrefs.SetInt("HighScore", 0);
         Cursor.SetCursor(defaultTexture, hotSpot, curMode);
         //objPosition = Vector3.Lerp(-5.76f, -4.2f, 0);
         staticRocketL.SetActive(true);
@@ -76,6 +82,11 @@ public class GM : MonoBehaviour
         scoreBig.GetComponent<TextMesh>().text = null;
         scoreEnd.GetComponent<TextMesh>().text = null;
         clickSpaceToContinue.GetComponent<TextMesh>().text = null;
+
+        highScore.GetComponent<TextMesh>().text = null;
+        highScoreNumber.GetComponent<TextMesh>().text = null; 
+
+      //  PlayerPrefs.SetInt("HighScore", 0);
     }
 
     // Update is called once per frame
@@ -124,6 +135,16 @@ public class GM : MonoBehaviour
             scoreEnd.GetComponent<TextMesh>().text = "YOUR SCORE IS:";
             scoreBig.GetComponent<TextMesh>().text = score.ToString();
             clickSpaceToContinue.GetComponent<TextMesh>().text = "Click space to continue";
+
+            highScore.GetComponent<TextMesh>().text = "HIGHSCORE:";
+
+            int highsScore1 = PlayerPrefs.GetInt("HighScore");
+            if (score > highsScore1)
+            {
+                PlayerPrefs.SetInt("HighScore", score);
+            }
+            highScoreNumber.GetComponent<TextMesh>().text = PlayerPrefs.GetInt("HighScore").ToString();
+
 
             if (Input.GetKeyDown(clickSpace) == true)
             {
