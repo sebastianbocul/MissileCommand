@@ -34,39 +34,40 @@ public class missileControlR : MonoBehaviour
         //staticRocket.transform.rotation = Quaternion.Euler(0, 0, angle);
         transform.rotation = (Quaternion.Euler(0, 0, angle - 90));
 
-     
+
     }
-   
+
     // Update is called once per frame
     void Update()
     {
+        if (Time.timeScale != 0)
+        {
+            timeKeeper += Time.deltaTime;
 
-        timeKeeper += Time.deltaTime;
-
-        if (timeKeeper > 0.05)
-        {
-            fracDist += 0.02f;
-            timeKeeper = 0;
+            if (timeKeeper > 0.05)
+            {
+                fracDist += 0.02f;
+                timeKeeper = 0;
+            }
+            if (gameObject == null)
+            {
+                Debug.Log("Null Objcet");
+            }
+            else
+            {
+                transform.position = Vector2.Lerp(transform.position, GM.targetPosition, fracDist);
+            }
         }
-        if (gameObject == null)
-        {
-            Debug.Log("Null Objcet");
-        }
-        else
-        {
-            transform.position = Vector2.Lerp(transform.position, GM.targetPosition, fracDist);
-        }
-       
 
     }
 
-   void OnTriggerEnter2D(Collider2D collider)
+    void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.name == "pointerRed2(Clone)")
         {
-            Destroy (gameObject);
+            Destroy(gameObject);
             Instantiate(boomObj, transform.position, boomObj.rotation);
-            FindObjectOfType<GM>().rocketLive = false;        
+            FindObjectOfType<GM>().rocketLive = false;
             FindObjectOfType<GM>().staticRocketR.SetActive(true);
             Destroy(gameObject);
 

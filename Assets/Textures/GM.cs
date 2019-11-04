@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class GM : MonoBehaviour
 {
 
@@ -84,7 +84,7 @@ public class GM : MonoBehaviour
         if (lives > 0)
         {
             //Launching rockets
-            if (Input.GetKeyDown(fireMissileL) == true && rockets > 0 && rocketLive == false)
+            if (Input.GetKeyDown(fireMissileL) == true && rockets > 0 && rocketLive == false && Time.timeScale == 1)
             {
                 Instantiate(missileObj, new Vector2(-5.76f, -4.2f), missileObj.rotation);
                 Instantiate(lockOnTarget, objPosition, lockOnTarget.rotation);
@@ -96,7 +96,7 @@ public class GM : MonoBehaviour
 
             }
 
-            if (Input.GetKeyDown(fireMissileR) == true && rockets > 0 && rocketLive == false)
+            if (Input.GetKeyDown(fireMissileR) == true && rockets > 0 && rocketLive == false && Time.timeScale == 1)
             {
                 Instantiate(missileObjR, new Vector2(6.4f, -4.2f), missileObjR.rotation);
                 Instantiate(lockOnTarget, objPosition, lockOnTarget.rotation);
@@ -106,15 +106,32 @@ public class GM : MonoBehaviour
 
             }
 
+            //spacebar functions
+            if (Input.GetKeyDown(clickSpace) == true)
+            {
+                if (Time.timeScale == 1)
+                {
+                    Time.timeScale = 0;
+                }
+                else Time.timeScale = 1;
+            }
+
 
         }
         else
         {
+
             scoreEnd.GetComponent<TextMesh>().text = "YOUR SCORE IS:";
             scoreBig.GetComponent<TextMesh>().text = score.ToString();
             clickSpaceToContinue.GetComponent<TextMesh>().text = "Click space to continue";
-        }
 
+            if (Input.GetKeyDown(clickSpace) == true)
+            {
+                //0 - menu
+                //1 - mainScene
+                SceneManager.LoadScene(0);
+            }
+        }
 
 
         enemySpawn();

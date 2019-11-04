@@ -1359,6 +1359,7 @@ MonoBehaviour:
   mousePosition: {x: -5, y: -5}
   fireMissileL: 323
   fireMissileR: 324
+  clickSpace: 32
   missileObj: {fileID: 3431712889067540876, guid: 1de3f3a965dcce14e8d74865333b73dc,
     type: 3}
   missileObjR: {fileID: 3431712889067540876, guid: c47b28895432b0b45ac93a7e5ad1d3b5,
