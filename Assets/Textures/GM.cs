@@ -22,6 +22,9 @@ public class GM : MonoBehaviour
     //pause/continue button
     public KeyCode clickSpace;
 
+    //ESC- quit button
+    public KeyCode exitClick;
+
 
     public Transform missileObj;
     public Transform missileObjR;
@@ -88,6 +91,8 @@ public class GM : MonoBehaviour
 
       //  PlayerPrefs.SetInt("HighScore", 0);
     }
+
+
 
     // Update is called once per frame
     void Update()
@@ -162,7 +167,10 @@ public class GM : MonoBehaviour
         mousePosition = new Vector3(Input.mousePosition.x + 16, Input.mousePosition.y - 16, Input.mousePosition.z - transform.position.z);
         objPosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
-
+        if(Input.GetKeyDown(exitClick)==true)
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 
 
