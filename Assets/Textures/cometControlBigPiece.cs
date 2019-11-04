@@ -14,7 +14,19 @@ public class cometControlBigPiece : MonoBehaviour
     public bool collision = false;
 
 
-    public float timer=0;
+    public float timer = 0;
+
+
+
+
+    void RocketsUpdate()
+    {
+        if (FindObjectOfType<GM>().rockets > 0)
+        {
+            FindObjectOfType<GM>().rockets--;
+        }
+    }
+
 
 
     // Start is called before the first frame update
@@ -23,7 +35,7 @@ public class cometControlBigPiece : MonoBehaviour
 
         randX = Random.Range(-200, 200);
         randX = randX / 100;
-        randY = Random.Range(200,201);
+        randY = Random.Range(200, 201);
         randY = randY / 100;
 
         GetComponent<Rigidbody2D>().velocity = new Vector2(randX, randY);
@@ -52,9 +64,9 @@ public class cometControlBigPiece : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if(timer > 1)
+        if (timer > 1)
         {
-            GetComponent<Collider2D>().enabled = true ;
+            GetComponent<Collider2D>().enabled = true;
         }
         // GetComponent<ColliderDistance2D>().
     }
@@ -78,7 +90,6 @@ public class cometControlBigPiece : MonoBehaviour
             if (collision.gameObject.name == city)
             {
                 Destroy(gameObject);
-                FindObjectOfType<GM>().score--;
                 Instantiate(destroy_city, gameObject.transform.position, destroy_city.rotation);
 
             }
@@ -88,10 +99,17 @@ public class cometControlBigPiece : MonoBehaviour
             if (collision.gameObject.name == city_destroy)
             {
                 Destroy(gameObject);
-                FindObjectOfType<GM>().score--;
+                RocketsUpdate();
                 Instantiate(destroy_city, gameObject.transform.position, destroy_city.rotation);
 
             }
+        if (collision.gameObject.name == "city08" || collision.gameObject.name == "city05_d(Clone)")
+        {
+
+            Destroy(gameObject);
+            RocketsUpdate();
+            Instantiate(destroy_city, gameObject.transform.position, destroy_city.rotation);
+        }
 
 
     }

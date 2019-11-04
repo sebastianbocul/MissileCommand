@@ -8,15 +8,17 @@ public class city_destruction : MonoBehaviour
     public Transform city2_d;
     public Transform city3_d;
     public Transform city4_d;
-    public Transform city5_dd;
+    public Transform city5_d;
     public Transform city6_d;
     public Transform city7_d;
+    //public Transform city8_d;
 
 
     // public Transform[] city_dd = { city1_d, city2_d, city3_d, city4_d, city5_d, city6_d,city7_d} ;
     public void spawnCity(int i)
     {
-
+        
+       
 
         switch (i)
         {
@@ -42,7 +44,7 @@ public class city_destruction : MonoBehaviour
                 }
             case 53:
                 {
-                    Instantiate(city5_dd, gameObject.transform.position, gameObject.transform.rotation);
+                    Instantiate(city5_d, gameObject.transform.position, gameObject.transform.rotation);
                     break;
                 }
 
@@ -57,9 +59,16 @@ public class city_destruction : MonoBehaviour
                     break;
                 }
 
+            //case 56:
+            //    {
+            //        Instantiate(city8_d, gameObject.transform.position, gameObject.transform.rotation);
+            //        break;
+            //    }
+
+
         }
-        
-      
+
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -70,6 +79,11 @@ public class city_destruction : MonoBehaviour
             char lastChar = gameObject.name[gameObject.name.Length - 1];
             int i = lastChar;
             spawnCity(i);
+
+            if (FindObjectOfType<GM>().lives > 0)
+            {
+                FindObjectOfType<GM>().lives--;
+            }
 
         }
 
@@ -82,6 +96,11 @@ public class city_destruction : MonoBehaviour
 
             spawnCity(i);
 
+            if (FindObjectOfType<GM>().lives > 0)
+            {
+                FindObjectOfType<GM>().lives--;
+            }
+
         }
 
         if (collision.gameObject.name == "cometBigPiece(Clone)")
@@ -91,6 +110,11 @@ public class city_destruction : MonoBehaviour
             int i = lastLChar;
             Debug.Log(i);
             spawnCity(i);
+
+            if (FindObjectOfType<GM>().lives > 0)
+            {
+                FindObjectOfType<GM>().lives--;
+            }
 
             // if(gameObject.name.l(i))
             /*for (int i = 1; i <= 7; i++)
