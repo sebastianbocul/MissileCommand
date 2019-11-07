@@ -38,26 +38,10 @@ public class missileControlR : MonoBehaviour
     }
 
     // Update is called once per frame
+    private float speed = 7.5f;
     void Update()
     {
-        if (Time.timeScale != 0)
-        {
-            timeKeeper += Time.deltaTime;
-
-            if (timeKeeper > 0.05)
-            {
-                fracDist += 0.02f;
-                timeKeeper = 0;
-            }
-            if (gameObject == null)
-            {
-                Debug.Log("Null Objcet");
-            }
-            else
-            {
-                transform.position = Vector2.Lerp(transform.position, GM.targetPosition, fracDist);
-            }
-        }
+        transform.position = Vector2.MoveTowards(transform.position, GM.targetPosition, speed * Time.deltaTime);
 
     }
 
