@@ -6,7 +6,7 @@ public class missileControlR : MonoBehaviour
 {
     public float timeKeeper = 0;
     public float fracDist = 0.01f;
-
+    public int ID = 0;
 
     public Transform boomObj;
     public Vector3 testPosition = new Vector3(6.4f, -4.2f, 0);
@@ -48,16 +48,21 @@ public class missileControlR : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        
-        if (collider.gameObject.name == "pointerRed2(Clone)")
+
+        if (collider.gameObject.name != "pointerRed2(Clone)")
         {
-            Destroy(gameObject);
+            return;
+        }
+
+
+        if (collider.gameObject.GetComponent<control>().ID == ID)
+        {
+            
             Instantiate(boomObj, transform.position, boomObj.rotation);
             FindObjectOfType<GM>().rocketLive = false;
             FindObjectOfType<GM>().staticRocketR.SetActive(true);
             Destroy(gameObject);
-
-
+            Destroy(collider.gameObject);
         }
     }
 

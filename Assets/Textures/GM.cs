@@ -129,14 +129,17 @@ public class GM : MonoBehaviour
 
             }
 
-            if (Input.GetKeyDown(fireMissileR) == true && rockets > 0 && Time.timeScale == 1)
+            else if (Input.GetKeyDown(fireMissileR) == true && rockets > 0 && Time.timeScale == 1)
             {
-                Instantiate(lockOnTarget, objPosition, lockOnTarget.rotation);
+                //Instantiate(lockOnTarget, objPosition, lockOnTarget.rotation);
 
+                Transform pointerNew = Instantiate(lockOnTarget, objPosition, lockOnTarget.rotation) as Transform;
+                pointerNew.gameObject.GetComponent<control>().ID = cursors_pos_index;
                 pointer_name.Add(lockOnTarget.name + cursors_pos_index);
                 cursors_pos.Add(objPosition);
 
-                Instantiate(missileObjR, new Vector2(6.4f, -4.2f), missileObjR.rotation);
+                Transform missileNew = Instantiate(missileObjR, new Vector2(6.4f, -4.2f), missileObjR.rotation);
+                missileNew.gameObject.GetComponent<missileControlR>().ID = cursors_pos_index;
 
                 rockets--;
                 rocketLive = true;

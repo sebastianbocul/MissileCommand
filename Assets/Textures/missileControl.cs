@@ -63,10 +63,10 @@ public class missileControl : MonoBehaviour
       //  Debug.Log(FindObjectOfType<GM>().cursors_pos_index-1);
       ////  obj = FindObjectOfType<GM>().pointer_pos[FindObjectOfType<GM>().cursors_pos_index-1];
       //  Debug.Log(obj);
-        int index = FindObjectOfType<GM>().cursors_pos_index - 1;
+        //int index = FindObjectOfType<GM>().cursors_pos_index - 1;
 
      //   Debug.Log(gameObject.GetComponent<control>().ID);
-        Debug.Log(ID);
+        //Debug.Log(ID);
         if (collider.gameObject.GetComponent<control>().ID == ID)
         {
 
