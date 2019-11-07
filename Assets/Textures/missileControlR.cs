@@ -16,13 +16,14 @@ public class missileControlR : MonoBehaviour
     private Vector3 object_pos;
     private float angle;
 
-
+    public Vector2 targetPosition;
     // Start is called before the first frame update
     void Start()
     {
-        GM.targetPosition = GM.objPosition;
-        fracDist = 0.01f;
-
+        targetPosition = FindObjectOfType<GM>().cursors_pos[FindObjectOfType<GM>().cursors_pos_index];
+        //     Debug.Log(FindObjectOfType<GM>().cursors_pos[FindObjectOfType<GM>().cursors_pos_index]);
+        FindObjectOfType<GM>().cursors_pos_index++;
+        
 
         //Rotacja rakiety
         mouse_pos = Input.mousePosition;
@@ -41,12 +42,13 @@ public class missileControlR : MonoBehaviour
     private float speed = 7.5f;
     void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, GM.targetPosition, speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
 
     }
 
     void OnTriggerEnter2D(Collider2D collider)
     {
+        
         if (collider.gameObject.name == "pointerRed2(Clone)")
         {
             Destroy(gameObject);

@@ -20,7 +20,11 @@ public class GM : MonoBehaviour
     public static Vector2 targetPosition;
     private Vector3 mouse_pos;
     private Vector3 object_pos;
-
+    public List<Transform> pointer_pos = new List<Transform>();
+    public int pointer_pos_index = 0;
+    //  public List<Vector3>[] cursors_pos;
+    public List<Vector3> cursors_pos = new List<Vector3>();
+    public int cursors_pos_index=0;
     #endregion
 
     #region KeyCodes
@@ -55,7 +59,7 @@ public class GM : MonoBehaviour
 
     #region Floats/Ints
     public int randX;
-    public int rockets = 15;
+    public int rockets =100;
     public int score = 0;
     public int lives = 7;
     public float spawnSmallCometTimer;
@@ -106,6 +110,13 @@ public class GM : MonoBehaviour
             {
                
                 Instantiate(lockOnTarget, objPosition, lockOnTarget.rotation);
+                lockOnTarget.position = objPosition;
+                pointer_pos.Add(lockOnTarget);
+                //Debug.Log("pointer1: " + pointer_pos[0]);
+                //Debug.Log("pointer2: " + pointer_pos[0].position);
+                cursors_pos.Add(objPosition);
+                //Debug.Log(cursors_pos[cursors_pos_index]);
+               
                 //yield return new WaitForEndOfFrame();
                 Instantiate(missileObj, new Vector2(-5.76f, -4.2f), missileObj.rotation);
                 rockets--;
@@ -119,6 +130,11 @@ public class GM : MonoBehaviour
             if (Input.GetKeyDown(fireMissileR) == true && rockets > 0 && Time.timeScale == 1)
             {
                 Instantiate(lockOnTarget, objPosition, lockOnTarget.rotation);
+
+                lockOnTarget.position = objPosition;
+                pointer_pos.Add(lockOnTarget);
+                cursors_pos.Add(objPosition);
+
                 Instantiate(missileObjR, new Vector2(6.4f, -4.2f), missileObjR.rotation);
 
                 rockets--;

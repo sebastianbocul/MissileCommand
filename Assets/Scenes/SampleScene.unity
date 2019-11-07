@@ -1355,8 +1355,11 @@ MonoBehaviour:
   - city07_d(Clone)
   defaultTexture: {fileID: 2800000, guid: aa06fbe64d5ea1b48af54dc641dba852, type: 3}
   curMode: 0
+  rocketLive: 0
   hotSpot: {x: 0, y: 0}
   mousePosition: {x: -5, y: -5}
+  cursors_pos: []
+  cursors_pos_index: 0
   fireMissileL: 323
   fireMissileR: 324
   clickSpace: 32
@@ -1369,24 +1372,23 @@ MonoBehaviour:
     type: 3}
   countText: {fileID: 1411587052}
   scoreText: {fileID: 164091306}
+  enemyObj: {fileID: 9181357708414953453, guid: 9b7ec479c237c614795c9365d482cedd,
+    type: 3}
+  enemyObjBig: {fileID: 9181357708414953453, guid: a91e75c08d4d4ff4abe8427d9ab1e694,
+    type: 3}
   scoreBig: {fileID: 77077206}
   scoreEnd: {fileID: 610122143}
   clickSpaceToContinue: {fileID: 2018929334}
   highScore: {fileID: 1347040512}
   highScoreNumber: {fileID: 1834861181}
-  enemyObj: {fileID: 9181357708414953453, guid: 9b7ec479c237c614795c9365d482cedd,
-    type: 3}
-  enemyObjBig: {fileID: 9181357708414953453, guid: a91e75c08d4d4ff4abe8427d9ab1e694,
-    type: 3}
   staticRocketL: {fileID: 330707268}
   staticRocketR: {fileID: 792581767}
-  spawnSmallCometTimer: 0
-  spawnBigCometTimer: 0
   randX: 0
-  rocketLive: 0
-  rockets: 15
+  rockets: 100
   score: 0
   lives: 7
+  spawnSmallCometTimer: 0
+  spawnBigCometTimer: 0
   rotationSpeed: 1
   h: 0
   v: 0
