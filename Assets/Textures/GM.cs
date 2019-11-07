@@ -96,13 +96,17 @@ public class GM : MonoBehaviour
 
     void Update()
     {
+
+        mousePosition = new Vector3(Input.mousePosition.x + 16, Input.mousePosition.y - 16, Input.mousePosition.z - transform.position.z);
+        objPosition = Camera.main.ScreenToWorldPoint(mousePosition);
         if (lives > 0)
         {
             //Launching rockets
-            if (Input.GetKeyDown(fireMissileL) == true && rockets > 0 && rocketLive == false && Time.timeScale == 1)
+            if (Input.GetKeyDown(fireMissileL) == true && rockets > 0 && Time.timeScale == 1)
             {
                
                 Instantiate(lockOnTarget, objPosition, lockOnTarget.rotation);
+                //yield return new WaitForEndOfFrame();
                 Instantiate(missileObj, new Vector2(-5.76f, -4.2f), missileObj.rotation);
                 rockets--;
                 rocketLive = true;
@@ -112,7 +116,7 @@ public class GM : MonoBehaviour
 
             }
 
-            if (Input.GetKeyDown(fireMissileR) == true && rockets > 0 && rocketLive == false && Time.timeScale == 1)
+            if (Input.GetKeyDown(fireMissileR) == true && rockets > 0 && Time.timeScale == 1)
             {
                 Instantiate(lockOnTarget, objPosition, lockOnTarget.rotation);
                 Instantiate(missileObjR, new Vector2(6.4f, -4.2f), missileObjR.rotation);
@@ -165,8 +169,7 @@ public class GM : MonoBehaviour
         countText.GetComponent<TextMesh>().text = rockets.ToString();
         scoreText.GetComponent<TextMesh>().text = score.ToString();
 
-        mousePosition = new Vector3(Input.mousePosition.x + 16, Input.mousePosition.y - 16, Input.mousePosition.z - transform.position.z);
-        objPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+
 
         if (Input.GetKeyDown(exitClick) == true)
         {
