@@ -20,10 +20,11 @@ public class GM : MonoBehaviour
     public static Vector2 targetPosition;
     private Vector3 mouse_pos;
     private Vector3 object_pos;
-    public List<Transform> pointer_pos = new List<Transform>();
+
     public int pointer_pos_index = 0;
     //  public List<Vector3>[] cursors_pos;
     public List<Vector3> cursors_pos = new List<Vector3>();
+    public List<string> pointer_name = new List<string>();
     public int cursors_pos_index=0;
     #endregion
 
@@ -109,16 +110,17 @@ public class GM : MonoBehaviour
             if (Input.GetKeyDown(fireMissileL) == true && rockets > 0 && Time.timeScale == 1)
             {
                
-                Instantiate(lockOnTarget, objPosition, lockOnTarget.rotation);
-                lockOnTarget.position = objPosition;
-                pointer_pos.Add(lockOnTarget);
+                Transform pointerNew = Instantiate(lockOnTarget, objPosition, lockOnTarget.rotation) as Transform;
+                pointerNew.gameObject.GetComponent<control>().ID = cursors_pos_index;
+                pointer_name.Add(lockOnTarget.name+cursors_pos_index);
                 //Debug.Log("pointer1: " + pointer_pos[0]);
                 //Debug.Log("pointer2: " + pointer_pos[0].position);
                 cursors_pos.Add(objPosition);
                 //Debug.Log(cursors_pos[cursors_pos_index]);
-               
+
                 //yield return new WaitForEndOfFrame();
-                Instantiate(missileObj, new Vector2(-5.76f, -4.2f), missileObj.rotation);
+                Transform missileNew = Instantiate(missileObj, new Vector2(-5.76f, -4.2f), missileObj.rotation);
+                missileNew.gameObject.GetComponent<missileControl>().ID = cursors_pos_index;
                 rockets--;
                 rocketLive = true;
 
@@ -131,8 +133,7 @@ public class GM : MonoBehaviour
             {
                 Instantiate(lockOnTarget, objPosition, lockOnTarget.rotation);
 
-                lockOnTarget.position = objPosition;
-                pointer_pos.Add(lockOnTarget);
+                pointer_name.Add(lockOnTarget.name + cursors_pos_index);
                 cursors_pos.Add(objPosition);
 
                 Instantiate(missileObjR, new Vector2(6.4f, -4.2f), missileObjR.rotation);

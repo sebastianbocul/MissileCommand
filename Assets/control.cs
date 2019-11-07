@@ -2,8 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
+
 public class control : MonoBehaviour
 {
+
+    public int ID = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,13 +20,5 @@ public class control : MonoBehaviour
     {
 
     }
-
-    void OnTriggerEnter2D(Collider2D collider)
-    {
-        if(collider.gameObject.name == "anti_missile_L(Clone)" || collider.gameObject.name == "anti_missile_R(Clone)")
-        {
-            Destroy(gameObject);
-        }
-        
-    }
+    
 }

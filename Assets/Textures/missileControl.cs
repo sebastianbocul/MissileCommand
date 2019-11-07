@@ -6,6 +6,7 @@ public class missileControl : MonoBehaviour
 {
     public float timeKeeper = 0;
     public float fracDist = 0.01f;
+    public int ID = 0;
 
 
     public Transform boomObj;
@@ -16,7 +17,7 @@ public class missileControl : MonoBehaviour
     private Vector3 object_pos;
     private float angle;
     public Vector2 targetPosition;
-    
+    public Transform obj;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +39,8 @@ public class missileControl : MonoBehaviour
         angle = Mathf.Atan2(mouse_pos.y, mouse_pos.x) * Mathf.Rad2Deg;
         transform.rotation = (Quaternion.Euler(0, 0, angle - 90));
 
+       
+
     }
 
     // Update is called once per frame
@@ -51,13 +54,27 @@ public class missileControl : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.name == "pointerRed2(Clone)")
+
+    if(collider.gameObject.name!= "pointerRed2(Clone)")
         {
-            Destroy(gameObject);
+            return;
+        }
+      //  Debug.Log(gameObject);
+      //  Debug.Log(FindObjectOfType<GM>().cursors_pos_index-1);
+      ////  obj = FindObjectOfType<GM>().pointer_pos[FindObjectOfType<GM>().cursors_pos_index-1];
+      //  Debug.Log(obj);
+        int index = FindObjectOfType<GM>().cursors_pos_index - 1;
+
+     //   Debug.Log(gameObject.GetComponent<control>().ID);
+        Debug.Log(ID);
+        if (collider.gameObject.GetComponent<control>().ID == ID)
+        {
+
             Instantiate(boomObj, transform.position, boomObj.rotation);
             FindObjectOfType<GM>().rocketLive = false;
             FindObjectOfType<GM>().staticRocketL.SetActive(true);
             Destroy(gameObject);
+            Destroy(collider.gameObject);
         }
     }
 
