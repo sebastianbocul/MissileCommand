@@ -11,6 +11,8 @@ public class ChangeScene : MonoBehaviour
         resolutions = Screen.resolutions;
 
         currentResolutionIndex = PlayerPrefs.GetInt(RESOLUTION_PREF_KEY, 0);
+
+        SetResolutionText(resolutions[currentResolutionIndex]);
     }
 
     #region ChangeScene
