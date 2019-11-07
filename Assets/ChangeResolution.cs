@@ -4,15 +4,33 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class ChangeScene : MonoBehaviour
+public class ChangeResolution : MonoBehaviour
 {
     void Start()
     {
+       
+        //resolutionUnique = Screen.resolutions;
         resolutions = Screen.resolutions;
+        //resolutions = resolutionUnique.Distinct().ToList();
+        //int index_res=0;
+        //    foreach(Resolution resUniq in resolutionUnique)
+        //    {
+            
+        //    foreach (Resolution res in resolutions)
+        //        {
+        //        if (resUniq.Equals(res))
+        //          {
+        //            resolutions[index_res] = resUniq;
+                    
+        //            index_res++;
+        //            }
+        //        }
+        //    }
 
-        currentResolutionIndex = PlayerPrefs.GetInt(RESOLUTION_PREF_KEY, 0);
-
-        SetResolutionText(resolutions[currentResolutionIndex]);
+            currentResolutionIndex = PlayerPrefs.GetInt(RESOLUTION_PREF_KEY, 0);
+          //  resolutions = Screen.resolutions;
+            SetResolutionText(resolutions[currentResolutionIndex]);
+      
     }
 
     #region ChangeScene
@@ -34,9 +52,11 @@ public class ChangeScene : MonoBehaviour
 
     #region Resolution
     [SerializeField]
-    private GameObject ResolutionText;
+    public GameObject ResolutionText;
 
-    private Resolution[] resolutions;
+    public Text debug_text;
+    public Resolution[] resolutions = null;
+    //public Resolution[] resolutionUnique = null;
 
     private int currentResolutionIndex = 0;
 
@@ -48,13 +68,15 @@ public class ChangeScene : MonoBehaviour
 
     private void SetResolutionText(Resolution resolution)
     {
-        ResolutionText.GetComponent<TextMesh>().text = resolution.width + "x" + resolution.height;
+        ResolutionText.GetComponent<TextMesh>().text = resolutions[currentResolutionIndex].ToString();
+
     }
     
     public void SetNextResolution()
     {
         currentResolutionIndex = GetNextWrappedIndex(resolutions, currentResolutionIndex);
         SetResolutionText(resolutions[currentResolutionIndex]);
+      
 
     }
 
@@ -62,7 +84,7 @@ public class ChangeScene : MonoBehaviour
     {
         currentResolutionIndex = GetPreviousWrappedIndex(resolutions, currentResolutionIndex);
         SetResolutionText(resolutions[currentResolutionIndex]);
-
+       
     }
 
     #endregion
@@ -97,7 +119,15 @@ public class ChangeScene : MonoBehaviour
     {
         if (collection.Count < 1) return 0;
         return (currentIndex + 1) % collection.Count;
-
+        //if(collection.Count > currentIndex)
+        //{
+        //    currentIndex++;
+        //    return currentIndex;
+        //}
+        //else
+        //{
+        //    return currentIndex;
+        //}
     }
 
     private int GetPreviousWrappedIndex<T>(IList<T> collection, int currentIndex)
@@ -105,7 +135,15 @@ public class ChangeScene : MonoBehaviour
         if (collection.Count < 1) return 0;
         if ((currentIndex - 1) < 0) return collection.Count - 1;
         return (currentIndex - 1) % collection.Count;
-
+        //if (collection.Count > 0)
+        //{
+        //    currentIndex--;
+        //    return currentIndex;
+        //}
+        //else
+        //{
+        //    return currentIndex;
+        //}
 
     }
     #endregion
