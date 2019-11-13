@@ -60,8 +60,9 @@ public class GM : MonoBehaviour
 
     #region Floats/Ints
     public int randX;
-    public int rockets =100;
+    public int rockets =15;
     public int score = 0;
+    public int spawnTime = 1;
     public int lives = 7;
     public float spawnSmallCometTimer;
     public float spawnBigCometTimer;
@@ -101,6 +102,7 @@ public class GM : MonoBehaviour
 
     void Update()
     {
+       // spawnTime = score/
 
         mousePosition = new Vector3(Input.mousePosition.x + 16, Input.mousePosition.y - 16, Input.mousePosition.z - transform.position.z);
         objPosition = Camera.main.ScreenToWorldPoint(mousePosition);
@@ -209,7 +211,7 @@ public class GM : MonoBehaviour
 
 
         //small comet spawner
-        if (spawnSmallCometTimer > 1f)
+        if (spawnSmallCometTimer > 1f - ((float)score / 100f))
         {
             spawnSmallCometTimer = 0;
             Instantiate(enemyObj, new Vector2(randX, 6f), enemyObj.rotation);
@@ -219,7 +221,7 @@ public class GM : MonoBehaviour
 
 
         //big comet spawner
-        if (spawnBigCometTimer > 3f)
+        if ((score>10) && (spawnBigCometTimer > 3f - ((float)score / 100f)))
         {
             spawnBigCometTimer = 0;
             Instantiate(enemyObjBig, new Vector2(randX, 6f), enemyObjBig.rotation);
