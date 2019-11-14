@@ -17,6 +17,7 @@ public class missileControlR : MonoBehaviour
     private float angle;
     public float speed;
     public Vector2 targetPosition;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -62,6 +63,10 @@ public class missileControlR : MonoBehaviour
             
             boom.transform.localScale = FindObjectOfType<GM>().boomScale * FindObjectOfType<GM>().boomRange;
 
+
+         
+
+           
             FindObjectOfType<GM>().rocketLive = false;
             FindObjectOfType<GM>().staticRocketR.SetActive(true);
             Destroy(gameObject);
