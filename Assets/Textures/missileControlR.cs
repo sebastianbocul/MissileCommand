@@ -15,11 +15,12 @@ public class missileControlR : MonoBehaviour
     private Vector3 mouse_pos;
     private Vector3 object_pos;
     private float angle;
-
+    public float speed;
     public Vector2 targetPosition;
     // Start is called before the first frame update
     void Start()
     {
+        speed = FindObjectOfType<GM>().globalSpeed;
         targetPosition = FindObjectOfType<GM>().cursors_pos[FindObjectOfType<GM>().cursors_pos_index];
         //     Debug.Log(FindObjectOfType<GM>().cursors_pos[FindObjectOfType<GM>().cursors_pos_index]);
         FindObjectOfType<GM>().cursors_pos_index++;
@@ -39,7 +40,7 @@ public class missileControlR : MonoBehaviour
     }
 
     // Update is called once per frame
-    private float speed = 7.5f;
+    
     void Update()
     {
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);

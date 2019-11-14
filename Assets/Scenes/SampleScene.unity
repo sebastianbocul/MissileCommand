@@ -1358,7 +1358,9 @@ MonoBehaviour:
   rocketLive: 0
   hotSpot: {x: 0, y: 0}
   mousePosition: {x: -5, y: -5}
+  pointer_pos_index: 0
   cursors_pos: []
+  pointer_name: []
   cursors_pos_index: 0
   fireMissileL: 323
   fireMissileR: 324
@@ -1376,6 +1378,8 @@ MonoBehaviour:
     type: 3}
   enemyObjBig: {fileID: 9181357708414953453, guid: a91e75c08d4d4ff4abe8427d9ab1e694,
     type: 3}
+  supplyObj: {fileID: 6585500668049128516, guid: e1be9a9cf3e15a1439cb382f699722f1,
+    type: 3}
   scoreBig: {fileID: 77077206}
   scoreEnd: {fileID: 610122143}
   clickSpaceToContinue: {fileID: 2018929334}
@@ -1386,9 +1390,11 @@ MonoBehaviour:
   randX: 0
   rockets: 100
   score: 0
+  spawnTime: 1
   lives: 7
   spawnSmallCometTimer: 0
   spawnBigCometTimer: 0
+  spawnSupplyTimer: 0
   rotationSpeed: 1
   h: 0
   v: 0

@@ -45,6 +45,8 @@ public class GM : MonoBehaviour
     public Transform scoreText;
     public Transform enemyObj;
     public Transform enemyObjBig;
+    public Transform supplyObj;
+
     #endregion
 
     #region GameObjects
@@ -66,11 +68,13 @@ public class GM : MonoBehaviour
     public int lives = 7;
     public float spawnSmallCometTimer;
     public float spawnBigCometTimer;
+    public float spawnSupplyTimer;
     public float rotationSpeed = 0.1f;
     public float h;
     public float v;
     public float horizontalSpeed = 2.0F;
     public float verticalSpeed = 2.0F;
+    public float globalSpeed = 7.5f;
     //rotacja rakiety
     // private float angle;
     #endregion
@@ -188,6 +192,7 @@ public class GM : MonoBehaviour
 
 
         enemySpawn();
+        spawnSuppy();
         countText.GetComponent<TextMesh>().text = rockets.ToString();
         scoreText.GetComponent<TextMesh>().text = score.ToString();
 
@@ -231,5 +236,22 @@ public class GM : MonoBehaviour
         }
 
     }
+    #endregion
+
+    #region spawnSupply
+    void spawnSuppy()
+    {
+        spawnSupplyTimer += Time.deltaTime;
+        randX = Random.Range(-8, 8);
+
+        if (spawnSupplyTimer > 5f)
+        {
+            spawnSupplyTimer = 0;
+            Instantiate(supplyObj, new Vector2(randX, 6f), supplyObj.rotation);
+        }
+
+
+    }
+
     #endregion
 }

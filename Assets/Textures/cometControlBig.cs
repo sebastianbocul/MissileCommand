@@ -42,14 +42,12 @@ public class cometControlBig : MonoBehaviour
         {
             Vector3 collisionPosition = gameObject.transform.position;
             Destroy(gameObject);
-            FindObjectOfType<GM>().rockets += 1;
             FindObjectOfType<GM>().score++;
 
 
 
 
-            //  ContactPoint2D contact = collision.GetContacts[];
-            // Vector3 collisionPosition = collision.transform.position;
+           
             int randomNumberOfComets;
             randomNumberOfComets = Random.Range(0, 4);
             for (int i = 0; i <= randomNumberOfComets; i++)
