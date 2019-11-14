@@ -25,7 +25,8 @@ public class dropControl : MonoBehaviour
             Destroy(gameObject);
             FindObjectOfType<GM>().rockets += 10;
             FindObjectOfType<GM>().globalSpeed += 1f;
-       
+            FindObjectOfType<GM>().boomRange += 1f;
+
         }
 
     }

@@ -22,7 +22,6 @@ public class missileControlR : MonoBehaviour
     {
         speed = FindObjectOfType<GM>().globalSpeed;
         targetPosition = FindObjectOfType<GM>().cursors_pos[FindObjectOfType<GM>().cursors_pos_index];
-        //     Debug.Log(FindObjectOfType<GM>().cursors_pos[FindObjectOfType<GM>().cursors_pos_index]);
         FindObjectOfType<GM>().cursors_pos_index++;
         
 
@@ -59,7 +58,10 @@ public class missileControlR : MonoBehaviour
         if (collider.gameObject.GetComponent<control>().ID == ID)
         {
             
-            Instantiate(boomObj, transform.position, boomObj.rotation);
+            Transform boom = Instantiate(boomObj, transform.position, boomObj.rotation);
+            
+            boom.transform.localScale = FindObjectOfType<GM>().boomScale * FindObjectOfType<GM>().boomRange;
+
             FindObjectOfType<GM>().rocketLive = false;
             FindObjectOfType<GM>().staticRocketR.SetActive(true);
             Destroy(gameObject);

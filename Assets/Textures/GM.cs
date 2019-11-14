@@ -26,6 +26,7 @@ public class GM : MonoBehaviour
     public List<Vector3> cursors_pos = new List<Vector3>();
     public List<string> pointer_name = new List<string>();
     public int cursors_pos_index=0;
+    public Vector3 boomScale = new Vector3(1, 1, 1);
     #endregion
 
     #region KeyCodes
@@ -75,6 +76,7 @@ public class GM : MonoBehaviour
     public float horizontalSpeed = 2.0F;
     public float verticalSpeed = 2.0F;
     public float globalSpeed = 7.5f;
+    public float boomRange = 1;
     //rotacja rakiety
     // private float angle;
     #endregion
@@ -83,6 +85,7 @@ public class GM : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        boomRange = 1;
         // PlayerPrefs.SetInt("HighScore", 0);
         Cursor.SetCursor(defaultTexture, hotSpot, curMode);
         //objPosition = Vector3.Lerp(-5.76f, -4.2f, 0);

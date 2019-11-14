@@ -71,7 +71,11 @@ public class missileControl : MonoBehaviour
         if (collider.gameObject.GetComponent<control>().ID == ID)
         {
 
-            Instantiate(boomObj, transform.position, boomObj.rotation);
+            Transform boom = Instantiate(boomObj, transform.position, boomObj.rotation);
+            boom.transform.localScale = FindObjectOfType<GM>().boomScale * FindObjectOfType<GM>().boomRange;
+            Debug.Log("boomRange: " + FindObjectOfType<GM>().boomRange);
+
+
             FindObjectOfType<GM>().rocketLive = false;
             FindObjectOfType<GM>().staticRocketL.SetActive(true);
             Destroy(gameObject);
