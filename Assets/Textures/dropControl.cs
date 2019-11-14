@@ -34,21 +34,7 @@ public class dropControl : MonoBehaviour
             FindObjectOfType<GM>().globalSpeed += 1f;
             FindObjectOfType<GM>().boomRange += 0f;
 
-            //StartCoroutine(Nazwa());
-            //Transform boom = Instantiate(boomObj, transform.position, boomObj.rotation);
-            //boom.transform.localScale = FindObjectOfType<GM>().boomScale * 10;
-            //Instantiate(boomObj, transform.position, boomObj.rotation);
             StartCoroutine(Nazwa());
-            //boom.transform.localScale = FindObjectOfType<GM>().boomScale * 9;
-
-            //timerBoom = 0;
-            //if (timerBoom > 5f)
-            //{
-            //    Transform boom2 = Instantiate(boomObj, transform.position, boomObj.rotation);
-            //    boom.transform.localScale = FindObjectOfType<GM>().boomScale * 10;
-            //    timerBoom = 0;
-            //}
-
          
         }
 

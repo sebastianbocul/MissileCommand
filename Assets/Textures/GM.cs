@@ -222,7 +222,7 @@ public class GM : MonoBehaviour
         if (spawnSmallCometTimer > 1f - ((float)score / 100f))
         {
             spawnSmallCometTimer = 0;
-            Instantiate(enemyObj, new Vector2(randX, 6f), enemyObj.rotation);
+            Instantiate(enemyObj, new Vector2(randX, 5.1f), enemyObj.rotation);
 
             // rocketLive = rocketLiveFun();
         }
@@ -232,7 +232,7 @@ public class GM : MonoBehaviour
         if ((score>10) && (spawnBigCometTimer > 3f - ((float)score / 100f)))
         {
             spawnBigCometTimer = 0;
-            Instantiate(enemyObjBig, new Vector2(randX, 6f), enemyObjBig.rotation);
+            Instantiate(enemyObjBig, new Vector2(randX, 5.1f), enemyObjBig.rotation);
 
 
 
@@ -250,7 +250,7 @@ public class GM : MonoBehaviour
         if (spawnSupplyTimer > 5f)
         {
             spawnSupplyTimer = 0;
-            Instantiate(supplyObj, new Vector2(randX, 6f), supplyObj.rotation);
+            Instantiate(supplyObj, new Vector2(randX, 5.1f), supplyObj.rotation);
         }
 
 
