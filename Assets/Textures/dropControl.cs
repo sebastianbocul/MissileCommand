@@ -13,7 +13,7 @@ public class dropControl : MonoBehaviour
     {
         timerBoom = 0;
         GetComponent<Rigidbody2D>().velocity = new Vector2(0   , -1f);
-
+        
     }
 
     // Update is called once per frame
@@ -25,16 +25,34 @@ public class dropControl : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("KOLIZJA Z " + gameObject.name);
         if (collision.gameObject.name == "boomNew(Clone)")
         {
 
             GetComponent<Collider2D>().enabled = false;
+            if (gameObject.name == "dropAmmo(Clone)")
+            {
+                FindObjectOfType<GM>().rockets += 10;
+                Destroy(gameObject);
+            }
+            if (gameObject.name == "drupGas(Clone)")
+            {
+                FindObjectOfType<GM>().globalSpeed += 1f;
+                Destroy(gameObject);
+            }
+            if (gameObject.name == "drupFire(Clone)")
+            {
+                FindObjectOfType<GM>().boomRange += 0.5f;
+                Destroy(gameObject);
+            }
+            if (gameObject.name == "drupSkull(Clone)")
+            {
+                StartCoroutine(Nazwa());
+            }
 
-            FindObjectOfType<GM>().rockets += 10;
-            FindObjectOfType<GM>().globalSpeed += 1f;
-            FindObjectOfType<GM>().boomRange += 0f;
+            
 
-            StartCoroutine(Nazwa());
+      
          
         }
 

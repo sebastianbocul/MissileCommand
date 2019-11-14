@@ -46,7 +46,10 @@ public class GM : MonoBehaviour
     public Transform scoreText;
     public Transform enemyObj;
     public Transform enemyObjBig;
-    public Transform supplyObj;
+    public Transform supplyAmmo;
+    public Transform supplySkull;
+    public Transform supplyFire;
+    public Transform supplyGas;
 
     #endregion
 
@@ -219,7 +222,7 @@ public class GM : MonoBehaviour
 
 
         //small comet spawner
-        if (spawnSmallCometTimer > 1f - ((float)score / 100f))
+        if (spawnSmallCometTimer > 2f - (((float)score / 100f)))
         {
             spawnSmallCometTimer = 0;
             Instantiate(enemyObj, new Vector2(randX, 5.1f), enemyObj.rotation);
@@ -229,7 +232,7 @@ public class GM : MonoBehaviour
 
 
         //big comet spawner
-        if ((score>10) && (spawnBigCometTimer > 3f - ((float)score / 100f)))
+        if ((score>20) && (spawnBigCometTimer > 5f - (((float)score / 100f))))
         {
             spawnBigCometTimer = 0;
             Instantiate(enemyObjBig, new Vector2(randX, 5.1f), enemyObjBig.rotation);
@@ -244,13 +247,51 @@ public class GM : MonoBehaviour
     #region spawnSupply
     void spawnSuppy()
     {
+        int randSupply=0;
         spawnSupplyTimer += Time.deltaTime;
         randX = Random.Range(-8, 8);
 
-        if (spawnSupplyTimer > 5f)
+        if (spawnSupplyTimer > 3f)
         {
-            spawnSupplyTimer = 0;
-            Instantiate(supplyObj, new Vector2(randX, 5.1f), supplyObj.rotation);
+            randSupply = Random.Range(0, 4);
+
+
+            switch (randSupply)
+        {
+            case 0:
+                {
+                        spawnSupplyTimer = 0;
+                        Instantiate(supplyAmmo, new Vector2(randX, 5.1f), supplyAmmo.rotation);
+                        break;
+                }
+
+            case 1:
+                {
+                        spawnSupplyTimer = 0;
+                        Instantiate(supplySkull, new Vector2(randX, 5.1f), supplySkull.rotation);
+                        break;
+                }
+
+            case 2:
+                {
+
+                        spawnSupplyTimer = 0;
+                        Instantiate(supplyFire, new Vector2(randX, 5.1f), supplyFire.rotation);
+
+                        break;
+                }
+
+            case 3:
+                {
+                        spawnSupplyTimer = 0;
+                        Instantiate(supplyGas, new Vector2(randX, 5.1f), supplyGas.rotation);
+
+                        break;
+                }
+        }
+
+       
+        
         }
 
 
