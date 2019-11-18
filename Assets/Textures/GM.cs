@@ -80,14 +80,23 @@ public class GM : MonoBehaviour
     public float verticalSpeed = 2.0F;
     public float globalSpeed = 7.5f;
     public float boomRange = 1;
+
+    public float smallCometTimer = 2f;
+    public float bigCometTimer = 5f;
+
+
     //rotacja rakiety
     // private float angle;
+
+
     #endregion
 
     #region Start
     // Start is called before the first frame update
     void Start()
     {
+
+
         boomRange = 1;
         // PlayerPrefs.SetInt("HighScore", 0);
         Cursor.SetCursor(defaultTexture, hotSpot, curMode);
@@ -103,6 +112,9 @@ public class GM : MonoBehaviour
         highScore.GetComponent<TextMesh>().text = null;
         highScoreNumber.GetComponent<TextMesh>().text = null;
 
+        SetDifficulty();
+
+
         //  PlayerPrefs.SetInt("HighScore", 0);
     }
     #endregion
@@ -112,8 +124,9 @@ public class GM : MonoBehaviour
 
     void Update()
     {
-       // spawnTime = score/
-
+        // spawnTime = score/
+        Debug.Log("SMallCometTimer: " + smallCometTimer);
+        Debug.Log("BigCometTImer: " + bigCometTimer);
         mousePosition = new Vector3(Input.mousePosition.x + 16, Input.mousePosition.y - 16, Input.mousePosition.z - transform.position.z);
         objPosition = Camera.main.ScreenToWorldPoint(mousePosition);
         if (lives > 0)
@@ -222,22 +235,22 @@ public class GM : MonoBehaviour
 
 
         //small comet spawner
-        if (spawnSmallCometTimer > 2f - (((float)score / 100f)))
+        // if (spawnSmallCometTimer > smallCometTimer - (((float)score / 100f)))
+        if ((spawnSmallCometTimer % smallCometTimer) > (smallCometTimer - ((0.1f)+ (float)score / 100f)))
         {
             spawnSmallCometTimer = 0;
-            Instantiate(enemyObj, new Vector2(randX, 5.1f), enemyObj.rotation);
+            Instantiate(enemyObj, new Vector2(randX, 5.2f), enemyObj.rotation);
 
             // rocketLive = rocketLiveFun();
         }
 
 
         //big comet spawner
-        if ((score>20) && (spawnBigCometTimer > 5f - (((float)score / 100f))))
+        //  if ((score>20) && (spawnBigCometTimer > bigCometTimer - (((float)score / 100f))))
+        if ((score>20) && ((spawnBigCometTimer % bigCometTimer) > (bigCometTimer - ((0.1f) + (float)score / 100f))))
         {
             spawnBigCometTimer = 0;
-            Instantiate(enemyObjBig, new Vector2(randX, 5.1f), enemyObjBig.rotation);
-
-
+            Instantiate(enemyObjBig, new Vector2(randX, 5.2f), enemyObjBig.rotation);
 
         }
 
@@ -261,14 +274,14 @@ public class GM : MonoBehaviour
             case 0:
                 {
                         spawnSupplyTimer = 0;
-                        Instantiate(supplyAmmo, new Vector2(randX, 5.1f), supplyAmmo.rotation);
+                        Instantiate(supplyAmmo, new Vector2(randX, 6f), supplyAmmo.rotation);
                         break;
                 }
 
             case 1:
                 {
                         spawnSupplyTimer = 0;
-                        Instantiate(supplySkull, new Vector2(randX, 5.1f), supplySkull.rotation);
+                        Instantiate(supplySkull, new Vector2(randX, 6f), supplySkull.rotation);
                         break;
                 }
 
@@ -276,7 +289,7 @@ public class GM : MonoBehaviour
                 {
 
                         spawnSupplyTimer = 0;
-                        Instantiate(supplyFire, new Vector2(randX, 5.1f), supplyFire.rotation);
+                        Instantiate(supplyFire, new Vector2(randX, 6f), supplyFire.rotation);
 
                         break;
                 }
@@ -284,7 +297,7 @@ public class GM : MonoBehaviour
             case 3:
                 {
                         spawnSupplyTimer = 0;
-                        Instantiate(supplyGas, new Vector2(randX, 5.1f), supplyGas.rotation);
+                        Instantiate(supplyGas, new Vector2(randX, 6f), supplyGas.rotation);
 
                         break;
                 }
@@ -298,4 +311,24 @@ public class GM : MonoBehaviour
     }
 
     #endregion
+
+    void SetDifficulty()
+    {
+        int difficultyIndex = PlayerPrefs.GetInt("difficulty");
+        if(difficultyIndex == 0)
+        {
+            smallCometTimer = 3f;
+            bigCometTimer = 6f;
+        }
+            else if(difficultyIndex == 1)
+        {
+                smallCometTimer = 2f;
+                bigCometTimer = 5f;
+}
+            else
+        {
+            smallCometTimer = 1f;
+            bigCometTimer = 3f;
+        }
+    }
 }

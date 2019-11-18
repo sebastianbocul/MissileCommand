@@ -30,7 +30,13 @@ public class ChangeResolution : MonoBehaviour
             currentResolutionIndex = PlayerPrefs.GetInt(RESOLUTION_PREF_KEY, 0);
           //  resolutions = Screen.resolutions;
             SetResolutionText(resolutions[currentResolutionIndex]);
-      
+           
+            currentDifficultyIndex = PlayerPrefs.GetInt(DIFFICULTY_PREF_KEY, 0);
+        SetDifficultyText(currentDifficultyIndex);
+        Debug.Log("current index: " + currentDifficultyIndex);
+
+
+
     }
 
     #region ChangeScene
@@ -46,6 +52,7 @@ public class ChangeResolution : MonoBehaviour
 
     private const string RESOLUTION_PREF_KEY = "resolution";
 
+    private const string DIFFICULTY_PREF_KEY = "difficulty";
 
 
     #endregion
@@ -59,6 +66,16 @@ public class ChangeResolution : MonoBehaviour
     //public Resolution[] resolutionUnique = null;
 
     private int currentResolutionIndex = 0;
+
+    #endregion
+
+    #region Difficulty
+    [SerializeField]
+    public GameObject DifficultyText;
+    public int[] difficulty = { 0, 1, 2, 3, 4, 5 };
+    public int currentDifficultyIndex = 1;
+  //  private IList<object> Difficulty;
+
 
     #endregion
 
@@ -85,6 +102,39 @@ public class ChangeResolution : MonoBehaviour
         currentResolutionIndex = GetPreviousWrappedIndex(resolutions, currentResolutionIndex);
         SetResolutionText(resolutions[currentResolutionIndex]);
        
+    }
+
+    public void SetNextDifficulty()
+    {
+       
+
+
+        if(currentDifficultyIndex < 2) currentDifficultyIndex ++;
+        Debug.Log("setNextDifficulty - current index: " + currentDifficultyIndex);
+
+        SetDifficultyText(currentDifficultyIndex);
+      
+    }
+
+
+    public void SetPreviousDifficulty()
+    {
+
+      
+        
+        if (currentDifficultyIndex > 0) currentDifficultyIndex--;
+        Debug.Log("setPrevDifficulty - current index: " + currentDifficultyIndex);
+        SetDifficultyText(currentDifficultyIndex);
+
+
+    }
+
+    private void SetDifficultyText(int difficulty_pref)
+    {
+        //  DifficultyText.GetComponent<TextMesh>().text = difficulty[currentDifficultyIndex].ToString();
+        if (difficulty_pref == 0) DifficultyText.GetComponent<TextMesh>().text = "EASY";
+         else if (difficulty_pref == 1) DifficultyText.GetComponent<TextMesh>().text = "MEDIUM";
+          else DifficultyText.GetComponent<TextMesh>().text = "HARD";
     }
 
     #endregion
@@ -153,5 +203,7 @@ public class ChangeResolution : MonoBehaviour
     public void ApplyChanges()
     {
         SetAndApplyResolution(currentResolutionIndex);
+
+        PlayerPrefs.SetInt(DIFFICULTY_PREF_KEY, currentDifficultyIndex);
     }
 }
