@@ -84,7 +84,7 @@ public class GM : MonoBehaviour
     public float smallCometTimer = 2f;
     public float bigCometTimer = 5f;
 
-
+    float distance = 0;
     //rotacja rakiety
     // private float angle;
 
@@ -131,8 +131,10 @@ public class GM : MonoBehaviour
         objPosition = Camera.main.ScreenToWorldPoint(mousePosition);
         if (lives > 0)
         {
+
+            
             //Launching rockets
-            if (Input.GetKeyDown(fireMissileL) == true && rockets > 0 && Time.timeScale == 1)
+            if ((Input.GetKeyDown(fireMissileL) == true && rockets > 0 && Time.timeScale == 1) && objPosition.x<=0)
             {
                
                 Transform pointerNew = Instantiate(lockOnTarget, objPosition, lockOnTarget.rotation) as Transform;
@@ -154,7 +156,7 @@ public class GM : MonoBehaviour
 
             }
 
-            else if (Input.GetKeyDown(fireMissileR) == true && rockets > 0 && Time.timeScale == 1)
+            if ((Input.GetKeyDown(fireMissileR) == true && rockets > 0 && Time.timeScale == 1) && objPosition.x > 0)
             {
                 //Instantiate(lockOnTarget, objPosition, lockOnTarget.rotation);
 
@@ -201,7 +203,7 @@ public class GM : MonoBehaviour
             highScoreNumber.GetComponent<TextMesh>().text = PlayerPrefs.GetInt("HighScore").ToString();
 
 
-            if (Input.GetKeyDown(clickSpace) == true)
+            if (Input.GetKeyDown(fireMissileL) == true)
             {
                 //0 - menu
                 //1 - mainScene
